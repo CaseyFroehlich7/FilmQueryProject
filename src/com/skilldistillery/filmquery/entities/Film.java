@@ -15,10 +15,15 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
+	private String language;
 	private List<Actor> actors;
 
 	
 	public Film() {}
+	
+	public Film(int id, String title, String desc, int year) {
+		
+	}
 
 
 	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
@@ -160,6 +165,16 @@ public class Film {
 	}
 
 
+	public String getLanguage() {
+		return language;
+	}
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
@@ -191,6 +206,12 @@ public class Film {
 				&& Double.doubleToLongBits(rentalRate) == Double.doubleToLongBits(other.rentalRate)
 				&& Double.doubleToLongBits(replacementCost) == Double.doubleToLongBits(other.replacementCost)
 				&& Objects.equals(specialFeatures, other.specialFeatures) && Objects.equals(title, other.title);
+	}
+
+
+	public void add(Film film) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

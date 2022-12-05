@@ -3,12 +3,12 @@ package com.skilldistillery.filmquery.entities;
 import java.util.List;
 import java.util.Objects;
 
-public class Actor {
+public class Actor extends Film {
 	
 	private int id;
 	private String firstName;
 	private String lastName;
-	private List<Film> films; //not required for hw 
+	private List<Film> film; //not required for hw 
 	
 	public Actor() {
 		
@@ -23,7 +23,7 @@ public class Actor {
 
 	public Actor(int id, String firstName, String lastName, List<Film> films) {
 		this(id, firstName, lastName);
-		this.films = films;
+		this.film = films;
 	}
 
 	public int getId() {
@@ -52,11 +52,11 @@ public class Actor {
 	
 
 	public List<Film> getFilms() {
-		return films;
+		return film;
 	}
 
 	public void setFilms(List<Film> films) {
-		this.films = films;
+		this.film = films;
 	}
 
 	@Override
