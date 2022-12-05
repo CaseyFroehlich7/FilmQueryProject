@@ -12,7 +12,7 @@ This was a great project to expose my lack of understanding on key componets of 
 <li>Eclipse</li>
 <li>Terminal</li>
 <li>MySQL</li>
-<li><MAMP</li>
+<li>MAMP</li>
 <li>Java</li>
 <li>Git/Github</li>
 <li>Stack Overflow</li>
