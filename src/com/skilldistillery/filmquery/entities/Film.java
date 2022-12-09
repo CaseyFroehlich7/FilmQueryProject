@@ -1,5 +1,6 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,19 +17,19 @@ public class Film {
 	private String rating;
 	private String specialFeatures;
 	private String language;
-	private List<Actor> actors;
+	private ArrayList<Actor> actors;
 
 	
-	public Film() {}
+
 	
-	public Film(int id, String title, String desc, int year) {
-		
-	}
+//	public Film(int id, String title, String desc, int year) {
+//		
+//	}
 
 
 	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
-			List<Actor> actors) {
+			ArrayList<Actor> actors, String language) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -40,11 +41,16 @@ public class Film {
 		this.length = length;
 		this.replacementCost = replacementCost;
 		this.rating = rating;
+		this.language = language;
 		this.specialFeatures = specialFeatures;
 		this.actors = actors;
+		
 	}
 
-
+	public Film() {
+		super();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -160,7 +166,7 @@ public class Film {
 	}
 
 
-	public void setActors(List<Actor> actors) {
+	public void setActors(ArrayList<Actor> actors) {
 		this.actors = actors;
 	}
 
@@ -180,13 +186,13 @@ public class Film {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
 				+ ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
 				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
-				+ ", specialFeatures=" + specialFeatures + ", actors=" + actors + "]";
+				+ ", specialFeatures=" + specialFeatures + ", language=" + language + ", actors=" + actors + "]";
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(actors, description, id, languageId, length, rating, releaseYear, rentalDuration,
+		return Objects.hash(actors, description, id, language, languageId, length, rating, releaseYear, rentalDuration,
 				rentalRate, replacementCost, specialFeatures, title);
 	}
 
@@ -201,18 +207,21 @@ public class Film {
 			return false;
 		Film other = (Film) obj;
 		return Objects.equals(actors, other.actors) && Objects.equals(description, other.description) && id == other.id
-				&& languageId == other.languageId && length == other.length && Objects.equals(rating, other.rating)
-				&& releaseYear == other.releaseYear && rentalDuration == other.rentalDuration
+				&& Objects.equals(language, other.language) && languageId == other.languageId && length == other.length
+				&& Objects.equals(rating, other.rating) && releaseYear == other.releaseYear
+				&& rentalDuration == other.rentalDuration
 				&& Double.doubleToLongBits(rentalRate) == Double.doubleToLongBits(other.rentalRate)
 				&& Double.doubleToLongBits(replacementCost) == Double.doubleToLongBits(other.replacementCost)
 				&& Objects.equals(specialFeatures, other.specialFeatures) && Objects.equals(title, other.title);
 	}
 
-
 	public void add(Film film) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
 	
 	
 

@@ -1,6 +1,6 @@
 package com.skilldistillery.filmquery.entities;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Actor extends Film {
@@ -8,7 +8,7 @@ public class Actor extends Film {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private List<Film> film; //not required for hw 
+	private ArrayList<Film> film; //not required for hw 
 	
 	public Actor() {
 		
@@ -21,7 +21,7 @@ public class Actor extends Film {
 	}
 	
 
-	public Actor(int id, String firstName, String lastName, List<Film> films) {
+	public Actor(int id, String firstName, String lastName, ArrayList<Film> films) {
 		this(id, firstName, lastName);
 		this.film = films;
 	}
@@ -51,11 +51,11 @@ public class Actor extends Film {
 	}
 	
 
-	public List<Film> getFilms() {
+	public ArrayList<Film> getFilms() {
 		return film;
 	}
 
-	public void setFilms(List<Film> films) {
+	public void setFilms(ArrayList<Film> films) {
 		this.film = films;
 	}
 

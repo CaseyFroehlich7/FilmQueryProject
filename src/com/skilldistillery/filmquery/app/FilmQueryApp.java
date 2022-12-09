@@ -1,7 +1,7 @@
 package com.skilldistillery.filmquery.app;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
@@ -9,9 +9,7 @@ import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
 import com.skilldistillery.filmquery.entities.Film;
 
 public class FilmQueryApp {
-
 	DatabaseAccessor db = new DatabaseAccessorObject();
-
 	public static void main(String[] args) throws SQLException, ClassNotFoundException  {
 		FilmQueryApp app = new FilmQueryApp();
 //		app.test();
@@ -21,7 +19,7 @@ public class FilmQueryApp {
 	private void launch() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		startUserInterface(sc);
-		sc.close();
+//		sc.close();
 		
 	}
 
@@ -33,16 +31,18 @@ public class FilmQueryApp {
 
 			System.out.println("Please select an option.");
 			int userInput = sc.nextInt();
-
+			sc.nextLine();
+			
 			switch (userInput) {
 			case 1:
 
 				System.out.println("Please enter film ID to search for film.");
 				int userId = sc.nextInt();
+				sc.nextLine();
 				Film filmById = db.findFilmById(userId);
 				if (filmById != null) {
 					
-					System.out.println(filmById.toString());
+					System.out.println(filmById);
 				} else {
 					System.out.println("Errror: film not found. Please try again.");
 				}
@@ -50,16 +50,27 @@ public class FilmQueryApp {
 				break;
 
 			case 2:
-
+				
 				System.out.println("Please enter a keyword to search for film.");
-				String userKeySearch = sc.nextLine();
+				try {
+					String key = sc.nextLine();
+					System.out.println("Key: " + key);
+					ArrayList<Film> films = db.findFilmByKeyword(key);
+					System.out.println("Films: " + films);
+					
+					if (films.size() > 0 ) {
+						for (Film film : films) {
+							System.out.println(film);
+						}
+					} else {
+						System.out.println("Error: film not found."); 
+						
+					}
 
-				List<Film> films = db.findFilmByKeyword(userKeySearch);
-
-				if (films.size() == 0) {
-					System.out.println("Error: 0 Films Found.");
-				} else {
-					System.out.println(films.size());
+				} catch (Exception E) {
+					System.out.println("Error");
+					sc.next();
+					startUserInterface(sc);
 				}
 
 				break;
@@ -89,4 +100,5 @@ public class FilmQueryApp {
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		
 	}
+	
 }
